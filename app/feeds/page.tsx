@@ -1,14 +1,14 @@
-import React from 'react'
-import DashboardLayout from './layout'
-import FilterSection from './components/FilterSection'
-import EventDetails from './components/EventDetails'
+'use client'
+import React, { useEffect } from 'react'
+import EventsSection from './components/EventsSection';
 
 
 export default function Dashboard() {
+
+   
   return (
     <div>
-        <FilterSection/>
-        <EventDetails/>
+        <EventsSection/>
     </div>
   )
 }
