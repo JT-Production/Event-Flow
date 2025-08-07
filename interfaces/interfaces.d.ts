@@ -22,6 +22,21 @@ interface EventType {
     rating: number;
     review_count: number;
     website: string
+    subtype: string
   };
+  tags: string[];
+  
+}
+
+interface FilterProps{
+  location: string;
+  date: string;
+  eventType: string;
+  category: string;
+  handleSearch: () => void;
+  setLocation: (value: string) => void;
+  setDate: (value: string) => void;
+  setEventType: (value: string) => void;
+  setCategory: (value: string) => void;
 }
 

@@ -10,6 +10,7 @@ export default function EventCard({
   eventId,
   date,
   thumbnail,
+  subtype
 }: any) {
   // const []
 
@@ -21,7 +22,7 @@ export default function EventCard({
           width={1000}
           height={1000}
           alt="event"
-          className="max-w-78 h-40 bg-black rounded-2xl"
+          className="max-w-76 h-40 bg-black rounded-2xl"
         />
         <div className="bg-white p-2.5 absolute top-3 right-3 rounded-full cursor-pointer">
           {" "}
@@ -39,7 +40,7 @@ export default function EventCard({
         </p>
 
         <div className="flex items-center justify-between mt-2">
-          <p className="flex items-center gap-2 text-xs">Lagos</p>
+          <p className="flex items-center gap-2 text-xs">{subtype}</p>
           <button className="bg-transparent p-2 px-4 border-2 border-blue-500 rounded-xl text-xs">
             View Details
           </button>
