@@ -17,7 +17,11 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className={`${isCollapsed ? 'w-20' : 'w-74'} bg-blue-00 border border-black/10 text-black p-4 flex flex-col h-screen transition-all duration-300 ease-in-out`}>
+    <aside
+      className={`${
+        isCollapsed ? "w-20" : "w-74"
+      } bg-blue-00 border border-black/10 text-black p-4 flex flex-col h-screen transition-all duration-300 ease-in-out`}
+    >
       {/* Header with logo and toggle */}
       <div className="flex justify-between items-center py-2">
         {!isCollapsed && (
@@ -29,8 +33,8 @@ export default function Sidebar() {
             className="h-14 w-40 object-cover"
           />
         )}
-        <PiSidebarSimpleBold 
-          className="text-black text-2xl cursor-pointer mb-1.5" 
+        <PiSidebarSimpleBold
+          className="text-black text-2xl cursor-pointer mb-1.5  mx-auto"
           onClick={toggleSidebar}
         />
       </div>
@@ -45,7 +49,7 @@ export default function Sidebar() {
           <RiHomeSmileLine className="text-xl flex-shrink-0" />
           {!isCollapsed && <span>Home</span>}
         </Link>
-        
+
         <Link
           href="/dashboard/settings"
           className="hover:bg-black/10 rounded-2xl flex items-center gap-3 p-3"
@@ -54,7 +58,7 @@ export default function Sidebar() {
           <HiMiniCalendarDateRange className="text-xl flex-shrink-0" />
           {!isCollapsed && <span>Schedule</span>}
         </Link>
-        
+
         <Link
           href="/dashboard/overview"
           className="hover:bg-black/10 rounded-2xl flex items-center gap-3 p-3"
@@ -63,9 +67,9 @@ export default function Sidebar() {
           <BsBookmarkDash className="text-lg flex-shrink-0" />
           {!isCollapsed && <span>Favourite</span>}
         </Link>
-        
+
         <hr className="mt-5 text-black/15" />
-        
+
         <Link
           href="/dashboard/settings"
           className="hover:bg-black/10 rounded-2xl flex items-center gap-3 p-3 mt-5"
@@ -74,9 +78,9 @@ export default function Sidebar() {
           <PiMapPinArea className="text-xl flex-shrink-0" />
           {!isCollapsed && <span>Near Me</span>}
         </Link>
-        
-        <Link 
-          href="/dashboard/profile" 
+
+        <Link
+          href="/dashboard/profile"
           className="hover:bg-black/10 rounded-2xl flex items-center gap-3 p-3"
           title={isCollapsed ? "Settings" : ""}
         >
@@ -86,13 +90,19 @@ export default function Sidebar() {
       </nav>
 
       {/* User profile section */}
-      <div className={`${isCollapsed ? 'p-2' : 'p-2.5'} bg-black/10 rounded-2xl flex gap-2 cursor-pointer items-center ${isCollapsed ? 'justify-center' : 'justify-evenly'}`}>
-        <Image 
-          src={"https://avatar.iran.liara.run/public/22"} 
-          width={1000} 
-          height={1000} 
-          alt='' 
-          className='w-10 h-10 flex-shrink-0' 
+      <div
+        className={`${
+          isCollapsed ? "p-2" : "p-2.5"
+        } bg-black/10 rounded-2xl flex gap-2 cursor-pointer items-center ${
+          isCollapsed ? "justify-center" : "justify-evenly"
+        }`}
+      >
+        <Image
+          src={"https://avatar.iran.liara.run/public/22"}
+          width={1000}
+          height={1000}
+          alt=""
+          className="w-10 h-10 flex-shrink-0"
         />
         {!isCollapsed && (
           <>

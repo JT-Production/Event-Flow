@@ -25,9 +25,11 @@ export default function EventsSection() {
   );
 
   const getEvents = async () => {
+
     try {
       const res = await networkInstance.get("/search-events");
       setEvents(res.data.data);
+      
       console.log(events)
     } catch (err: any) {
         // setError(err);
@@ -38,30 +40,33 @@ export default function EventsSection() {
     }
   };
 console.log(events)
-  useEffect(() => {
-    if (events.length > 0) {
-      localStorage.setItem('events', JSON.stringify(events));
-    }
-  }, [events]);
+console.log(limit)
+  // useEffect(() => {
+  //   if (events.length > 0) {
+  //     localStorage.setItem('events', JSON.stringify(events));
+  //   }
+  // }, [events]);
 
   const handleSearch = () => {
-    // getEvents();
+    getEvents();
   };
 
-  useEffect(() => {
-    const savedEvents = localStorage.getItem('events');
-    if (savedEvents) {
-      try {
-        const parsedEvents = JSON.parse(savedEvents);
-        setEvents(parsedEvents);
-      } catch (error) {
-        console.error('Error parsing saved events:', error);
-        setEvents([]);
-      }
-    }
-  }, []);
+  // useEffect(() => {
+  //   const savedEvents = localStorage.getItem('events');
+  //   if (savedEvents) {
+  //     try {
+  //       const parsedEvents = JSON.parse(savedEvents);
+  //       setEvents(parsedEvents);
+  //     } catch (error) {
+  //       console.error('Error parsing saved events:', error);
+  //       setEvents([]);
+  //     }
+  //   }
+  // }, []);
+ 
+  
   return (
-    <div className="flex-1">
+    <div className="flex-1 wid">
       <FilterSection 
         location={location} 
         category={category} 
@@ -73,7 +78,7 @@ console.log(events)
         setEventType={setEventType}
         setCategory={setCategory}
       />
-      <div className="  rounded-4xl grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-5 p-1 mx-10 place-items-center">
+      <div className="  rounded-4xl grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 gap-5 p-1 mx-10 place-items-center">
         {events && events.length > 0 ? (
           events.map((event) => (
             <div key={event.event_id} className=" flex flex-col gap-1 border rounded-2xl p-2 max-w-80 mb-5">
@@ -101,7 +106,7 @@ console.log(events)
 
         
       </div>
-     <Pagenation/>
+     <Pagenation setLimit={setLimit} nextList={getEvents}/>
     </div>
   );
 }
