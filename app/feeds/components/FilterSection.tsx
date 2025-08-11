@@ -7,7 +7,7 @@ import { HiOutlineCalendarDateRange } from 'react-icons/hi2';
 export default function FilterSection({location, date, eventType, category, handleSearch, setLocation, setDate, setEventType, setCategory}: FilterProps) {
   return (
     <div>
-        <div className="md:flex items-center p-10 gap-3 w-full space-y-4 sm:space-y-0">
+        <div className="md:flex flex-wrap items-center p-10 gap-3 w-full space-y-4 sm:space-y-0">
         <div className="flex items-center ">
           <div className="rounded-2xl border-black/15 border-r-0 p-[11px] px-3 border rounded-r-none">
             <CiLocationOn className="text-lg text-black/70" />

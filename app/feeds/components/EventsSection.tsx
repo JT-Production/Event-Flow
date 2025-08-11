@@ -41,28 +41,28 @@ export default function EventsSection() {
   };
 console.log(events)
 console.log(limit)
-  // useEffect(() => {
-  //   if (events.length > 0) {
-  //     localStorage.setItem('events', JSON.stringify(events));
-  //   }
-  // }, [events]);
+  useEffect(() => {
+    if (events.length > 0) {
+      localStorage.setItem('events', JSON.stringify(events));
+    }
+  }, [events]);
 
   const handleSearch = () => {
     getEvents();
   };
 
-  // useEffect(() => {
-  //   const savedEvents = localStorage.getItem('events');
-  //   if (savedEvents) {
-  //     try {
-  //       const parsedEvents = JSON.parse(savedEvents);
-  //       setEvents(parsedEvents);
-  //     } catch (error) {
-  //       console.error('Error parsing saved events:', error);
-  //       setEvents([]);
-  //     }
-  //   }
-  // }, []);
+  useEffect(() => {
+    const savedEvents = localStorage.getItem('events');
+    if (savedEvents) {
+      try {
+        const parsedEvents = JSON.parse(savedEvents);
+        setEvents(parsedEvents);
+      } catch (error) {
+        console.error('Error parsing saved events:', error);
+        setEvents([]);
+      }
+    }
+  }, []);
  
   
   return (
