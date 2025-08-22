@@ -13,7 +13,7 @@ export default function Header() {
       </div>
 
       <div className="flex gap-2 items-center">
-        <Button classname={"text-white items-center gap-1 bg-blue-500 text-[14px] sm:flex hidden"}> <AiOutlinePlus className='text-lg' />Create Event</Button>
+        <Button classname={"text-white items-center gap-1 bg-blue-500 text-[14px] sm:flex hidden"} > <AiOutlinePlus className='text-lg' />Create Event</Button>
       <IoNotificationsOutline className='text-2xl border rounded-full w-9 h-9 p-2 font-light' />  
       <Image src={"https://avatar.iran.liara.run/public/22"} width={1000} height={1000} alt='' className='w-10 h-10' />
 
