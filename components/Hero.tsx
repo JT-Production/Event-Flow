@@ -1,8 +1,11 @@
+"use client"
 import React from "react";
 import { Raleway } from "next/font/google";
 import { GoDotFill } from "react-icons/go";
 import Button from "./Button";
 import Navbar from "./Navbar";
+import Link from "next/link";
+import useAuthContext from "@/context/AuthContext";
 
 export const raleway = Raleway({
   subsets: ["latin"],
@@ -10,15 +13,27 @@ export const raleway = Raleway({
 });
 
 export default function Hero() {
+  const { user } = useAuthContext();
   return (
     <>
-   
       <div
         className={
           "text-black flex flex-col justify-center items-center h-140 " +
           raleway.className
         }
       >
+        {/* background grid line */}
+        <div
+          aria-hidden="true"
+          className="absolute top-0 left-0 w-full h-full pointer-events-none -z-10"
+          style={{
+            backgroundImage: `
+              repeating-linear-gradient(to right, #e0e7ef 0px, #e0e7ef 1px, transparent 1px, transparent 80px),
+              repeating-linear-gradient(to bottom, #e0e7ef 0px, #e0e7ef 1px, transparent 1px, transparent 80px)
+            `,
+            opacity: 0.5,
+          }}
+        ></div>
         <div className="text-sm  border border-blue-500 px-2 py-0.5 rounded-3xl flex gap-1 items-center mb-5">
           {" "}
           <GoDotFill className="text-blue-500" />
@@ -32,18 +47,33 @@ export default function Hero() {
           Discover, plan, and manage events seamlessly—all in one place.
         </p>
 
-        <div className="flex gap-4">
-          <Button classname={"mt-10 px-8 py-4 text-white text-[14px] "}>Sign up</Button>
-          <Button
-            classname={
-              "mt-10 px-10 py-4 bg-transparent border border-blue-500 text-blue-500 text-[14px] "
-            }
-          >
-            Login
-          </Button>
+        <div className={`flex gap-4 ` + raleway.className}>
+          {user ? (
+             <Link href={"/feeds"}>
+                <Button classname={"mt-10 px-8 py-4 text-white text-[18px] font-bold"}>
+                  Go to Dashboard
+                </Button>
+              </Link>
+          ) : (
+            <>
+              <Link href={"/signup"}>
+                <Button classname={"mt-10 px-8 py-4 text-white text-[14px] "}>
+                  Sign up
+                </Button>
+              </Link>
+              <Link href={"/login"}>
+                <Button
+                  classname={
+                    "mt-10 px-10 py-4 bg-transparent border border-blue-500 text-blue-500 text-[14px] "
+                  }
+                >
+                  Login
+                </Button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
-
     </>
   );
 }

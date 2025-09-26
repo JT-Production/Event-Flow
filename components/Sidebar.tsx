@@ -1,4 +1,6 @@
 "use client";
+import useAuthContext from "@/context/AuthContext";
+import useSideBarContext from "@/context/SideBarContext";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -10,20 +12,25 @@ import { PiMapPinArea, PiSidebarSimpleBold } from "react-icons/pi";
 import { RiHomeSmileLine } from "react-icons/ri";
 
 export default function Sidebar() {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const {isOpen, setIsOpen} = useSideBarContext();
+  const {user} = useAuthContext()
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
+    setIsOpen(!isOpen);
   };
 
   return (
     <aside
-      className={`${
-        isCollapsed ? "w-20" : "w-74"
-      } bg-blue-00 border border-black/10 text-black p-4 flex flex-col h-screen transition-all duration-300 ease-in-out`}
+      className={`fixed top-0 left-0 z-40 ${
+      isCollapsed ? "w-20" : "w-74"
+      } bg-blue-00 border border-black/10 text-black p-4 flex flex-col h-screen transition-all bg-white duration-300 ease-in-out
+      md:static md:z-auto md:h-screen md:flex 
+      ${isOpen ? "block" : "hidden"} md:block`}
     >
       {/* Header with logo and toggle */}
-      <div className="flex justify-between items-center py-2">
+      <div className="flex justify-between items-center py-2 ">
         {!isCollapsed && (
           <Image
             src={"/logoblue.png"}
@@ -107,8 +114,10 @@ export default function Sidebar() {
         {!isCollapsed && (
           <>
             <div className="mr-5">
-              <p className="font-bold">John Doe</p>
-              <p className="text-xs">yourname@example.com</p>
+              <p className="font-bold">{user?.displayName ? user?.displayName : "John Doe"} </p>
+              <p className="text-xs">{user?.email? user?.email: "yourname@example.com" }</p>
+              {/* <p className="font-bold">{user.displayName}</p>
+              <p className="text-xs">{user.email}</p> */}
             </div>
             <IoIosArrowForward />
           </>

@@ -11,6 +11,10 @@ const config = {
             rale: ['Raleway', 'sans-serif'],
         }
     },
+    screens: {
+      // 'md': '800px',    // instead of default 768px
+      // 'lg': '1500px',
+    }
   },
   plugins: [],
 };

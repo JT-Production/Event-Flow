@@ -8,6 +8,7 @@ import EventCard from "./EventCard";
 import NetworkInstance from "@/services/NetworkInstance";
 import FilterSection from "./FilterSection";
 import Pagenation from "./Pagenation";
+import useSideBarContext from "@/context/SideBarContext";
 
 
 export default function EventsSection() {
@@ -23,12 +24,22 @@ export default function EventsSection() {
     date,
     limit
   );
+  const {isOpen, setIsOpen} = useSideBarContext();
+  const [gridValue, setGridValue] = useState<string>();
+  const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
 
+  useEffect(() => {
+    if (screenWidth >= 1250) {
+      setGridValue("4")
+      console.log(screenWidth)
+  }}, [screenWidth]);
+
+console.log(screenWidth)
   const getEvents = async () => {
 
     try {
       const res = await networkInstance.get("/search-events");
-      setEvents(res.data.data);
+      // setEvents(res.data.data);
       
       console.log(events)
     } catch (err: any) {
@@ -64,7 +75,7 @@ console.log(limit)
     }
   }, []);
  
-  
+  console.log(isOpen)
   return (
     <div className="flex-1 wid">
       <FilterSection 
@@ -78,23 +89,22 @@ console.log(limit)
         setEventType={setEventType}
         setCategory={setCategory}
       />
-      <div className="  rounded-4xl grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 gap-5 p-1 mx-10 place-items-center">
+      <div className={`  rounded-4xl grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-${isOpen  ? "3": "4"} md:grid-cols-4 gap-5 p-1 lg:mx-10 mx-5 place-items-center`}>
         {events && events.length > 0 ? (
           events.map((event) => (
-            <div key={event.event_id} className=" flex flex-col gap-1 border rounded-2xl p-2 max-w-80 mb-5">
+            <div key={event.event_id} className=" flex flex-col gap-1 border border-black/15 rounded-3xl p-4 max-w-74 mb-3">
               <EventCard 
                 eventId={event.event_id} 
-                name={event.name.split(" ").length > 4
-                  ? event.name.split(" ").slice(0, 5).join(" ") + "..."
-                  : event.name} 
-                date={event.date_human_readable.split(" ").length > 5
-                  ? event.date_human_readable.split(" ").slice(0, 10).join(" ") + "..."
-                  : event.date_human_readable} 
-                venue={event.venue.name?.split(" ").length > 4
-                  ? event.venue.name.split(" ").slice(0, 5).join(" ") + "..."
-                  : event.venue.name} 
+                name={event.name} 
+                date={event.date_human_readable} 
+                venue={event.venue.full_address} 
                 thumbnail={event.thumbnail}
                 subtype={event.venue.city}
+                description ={event.description}
+                phoneNumber={event.venue.phone_number}
+                country={event.venue.country}
+                review={event.venue.review_count}
+                rating={event.venue.rating}
               />
             </div>
           ))

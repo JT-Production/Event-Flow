@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { use } from "react";
 import Button from "./Button";
 import { TbCalendarEvent } from "react-icons/tb";
 import Link from "next/link";
@@ -8,12 +8,13 @@ import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const path = usePathname();
+
   // alert(path)
   return (
     <div className={`text-white flex justify-center items-center px-20`}>
       <div
         className={
-          "px-8 py-4 w-full shadow-lg border border-gray-100 flex items-center justify-between rounded-3xl mt-2 "
+          "px-8 py-4 w-full shadow-lg border border-gray-100 flex items-center justify-between rounded-3xl mt-2  bg-white"
         }
       >
         <Image
@@ -22,16 +23,17 @@ export default function Navbar() {
           width={100}
           height={100}
           className="h-10 w-30 object-cover"
+         
         />
         <ul className="flex gap-10 text-sm font-semibold   items-center justify-center">
-          <Link href={"/"}>
-            {" "}
+          <Link href={"/"} className="cursor-pointer">
+            
             <li
               className={`  cursor-pointer hover:text-blue-500 " ${
-                path == "/" ? " text-blue-500 " : " text-black "
+                path === "/" ? " text-blue-500 " : " text-black "
               }`}
             >
-              Home
+              Homee
             </li>
           </Link>
           <Link href={"/events"}>

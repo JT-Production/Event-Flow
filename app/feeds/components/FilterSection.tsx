@@ -7,8 +7,8 @@ import { HiOutlineCalendarDateRange } from 'react-icons/hi2';
 export default function FilterSection({location, date, eventType, category, handleSearch, setLocation, setDate, setEventType, setCategory}: FilterProps) {
   return (
     <div>
-        <div className="md:flex flex-wrap items-center p-10 gap-3 w-full space-y-4 sm:space-y-0">
-        <div className="flex items-center ">
+        <div className="md:flex md:flex-wrap lg:flex-nowrap  items-center p-10 gap-3 w-full space-y-4  sm:space-y-0">
+        <div className="flex items-center grow-7 mb-2">
           <div className="rounded-2xl border-black/15 border-r-0 p-[11px] px-3 border rounded-r-none">
             <CiLocationOn className="text-lg text-black/70" />
           </div>
@@ -18,17 +18,17 @@ export default function FilterSection({location, date, eventType, category, hand
             onChange={(e) => {
               setLocation(e.target.value);
             }}
-            className="border border-black/15 text-black/60  border-l-0 rounded-l-none p-3 px-0 rounded-2xl w-full sm:w-82 focus:outline-0 text-xs"
+            className="border border-black/15 text-black/60  border-l-0 rounded-l-none p-3 px-0 rounded-2xl w-full grow-7  sm:w-82 focus:outline-0 text-xs"
             placeholder="Search"
           />
         </div>
 
-        <div className="flex items-center">
+        <div className="flex items-center grow-7 mb-2">
           <div className="rounded-2xl border-black/15 border-r-0 p-3 px-3 border rounded-r-none">
             <HiOutlineCalendarDateRange className="text-lg text-black/70" />
           </div>
           <select
-            className="border border-black/15 text-black/60  border-l-0 rounded-l-none p-3.5 px-0 rounded-2xl  w-full  sm:w-38 focus:outline-0  text-xs"
+            className="border grow-7 border-black/15 text-black/60  border-l-0 rounded-l-none p-3.5 px-0 rounded-2xl  w-full  sm:w-26 focus:outline-0  text-xs"
             value={date}
             onChange={(e) => {
               setDate(e.target.value);
@@ -63,12 +63,12 @@ export default function FilterSection({location, date, eventType, category, hand
             </option>
           </select>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center grow-7 mb-2">
           <div className="rounded-2xl border-black/15 border-r-0 p-3 px-3 border rounded-r-none">
             <HiOutlineCalendarDateRange className="text-lg text-black/70" />
           </div>
           <select
-            className="border border-black/15 text-black/60  border-l-0 rounded-l-none p-3.5 px-0 rounded-2xl w-full  sm:w-38 focus:outline-0  text-xs"
+            className="border grow-7 border-black/15 text-black/60  border-l-0 rounded-l-none p-3.5 px-0 rounded-2xl w-full  sm:w-26 focus:outline-0  text-xs"
             value={eventType}
             onChange={(e) => {
               setEventType(e.target.value);
@@ -100,12 +100,12 @@ export default function FilterSection({location, date, eventType, category, hand
             </option>
           </select>
         </div>
-        <div className="flex items-center">
-          <div className="rounded-2xl border-black/15 border-r-0 p-3 px-3 border rounded-r-none">
+        <div className="flex items-center grow-2 mb-2">
+          <div className="rounded-2xl border-black/15 border-r-0 p-3 px-3 border rounded-r-none grow-3">
             <HiOutlineCalendarDateRange className="text-lg text-black/70" />
           </div>
           <select
-            className="border border-black/15 text-black/60  border-l-0 rounded-l-none p-3.5 px-0 rounded-2xl w-full  sm:w-38 focus:outline-0  text-xs"
+            className="border border-black/15 text-black/60  border-l-0 rounded-l-none p-3.5 px-0 rounded-2xl w-full  sm:w-26 focus:outline-0  text-xs"
             value={category}
             onChange={(e) => {
               setCategory(e.target.value);
@@ -153,7 +153,7 @@ export default function FilterSection({location, date, eventType, category, hand
 
         <Button
           onClick={handleSearch}
-          classname={"text-white items-center gap-2 px-4 w-auto text-sm"}
+          classname={"text-white items-center gap-2 px-4 w-auto text-sm mb-3"}
         >
           {" "}
           <CiSearch className="text-lg" /> Search
