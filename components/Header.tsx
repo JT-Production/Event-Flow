@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 import { AiOutlinePlus } from "react-icons/ai";
 import { IoLogOutOutline, IoNotificationsOutline } from "react-icons/io5";
@@ -15,6 +15,7 @@ import { TiUserOutline } from "react-icons/ti";
 import Link from "next/link";
 
 export default function Header() {
+  const [dropDown, setDropDown] = useState(false)
   const { isOpen, setIsOpen } = useSideBarContext();
   const {user, setUser} = useAuthContext();
   const router = useRouter()
@@ -29,14 +30,14 @@ export default function Header() {
   }
   // console.log(user)
   return (
-    <div className="py-6 px-10 flex justify-between border-b border-black/20">
+    <div className="py-3 px-10 flex justify-between border-b border-black/20">
       <div className="text-sm">
         <h1 className="sm:text-2xl text-lg font-semibold">
           {" "}
           Good Morning, {user ? user.displayName : "John doe"}👋
         </h1>
         <p className="text-xs">Let's dive into exciting events</p>
-        <button onClick={()=> { signOut(auth).then(() => router.push("/login")) }}>sign out</button>
+       
       </div>
 
       <div className="flex gap-2 items-center">
@@ -58,11 +59,12 @@ export default function Header() {
           height={1000}
           alt=""
           className="w-10 h-10"
-          onClick={toggleSidebar}
+          // onClick={toggleSidebar}
+          onClick={()=> setDropDown(!dropDown)}
         />
-        <div className="absolute mt-3  shadow-2xl p-3  right-10 rounded-2xl bg-white flex flex-col gap-1">
+        <div className={`absolute mt-3  shadow-2xl p-3  right-10 rounded-2xl bg-white   gap-1 ${dropDown ? "flex flex-col" : "hidden"}`}>
          <div className="flex items-center gap-2 cursor-pointer hover:bg-black/10 p-2 rounded-xl"><TiUserOutline/> <Link href={"/profile"}>Profile</Link></div>
-          <div className="flex items-center gap-2 cursor-pointer hover:bg-red-400 transition ease-in-out p-2 rounded-xl bg-red-500 text-white"><IoLogOutOutline/> <p>Logout</p></div>
+          <div className="flex items-center gap-2 cursor-pointer hover:bg-red-400 transition ease-in-out p-2 rounded-xl bg-red-500 text-white" onClick={()=> { signOut(auth).then(() => router.push("/login")) }}><IoLogOutOutline/> <p>Logout</p></div>
         </div>
         </div>
       </div>

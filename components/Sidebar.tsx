@@ -49,7 +49,7 @@ export default function Sidebar() {
       {/* Navigation */}
       <nav className="space-y-1 mt-5 text-sm h-screen">
         <Link
-          href="/dashboard/overview"
+          href="/feeds"
           className="hover:bg-black/10 flex items-center gap-3 bg-blue-500 p-3 rounded-2xl text-white"
           title={isCollapsed ? "Home" : ""}
         >
@@ -58,7 +58,7 @@ export default function Sidebar() {
         </Link>
 
         <Link
-          href="/dashboard/settings"
+          href="/schedule"
           className="hover:bg-black/10 rounded-2xl flex items-center gap-3 p-3"
           title={isCollapsed ? "Schedule" : ""}
         >
@@ -67,7 +67,7 @@ export default function Sidebar() {
         </Link>
 
         <Link
-          href="/dashboard/overview"
+          href="/favourite"
           className="hover:bg-black/10 rounded-2xl flex items-center gap-3 p-3"
           title={isCollapsed ? "Favourite" : ""}
         >
@@ -78,7 +78,7 @@ export default function Sidebar() {
         <hr className="mt-5 text-black/15" />
 
         <Link
-          href="/dashboard/settings"
+          href="/feeds/nearme"
           className="hover:bg-black/10 rounded-2xl flex items-center gap-3 p-3 mt-5"
           title={isCollapsed ? "Near Me" : ""}
         >
@@ -87,7 +87,7 @@ export default function Sidebar() {
         </Link>
 
         <Link
-          href="/dashboard/profile"
+          href="/settings"
           className="hover:bg-black/10 rounded-2xl flex items-center gap-3 p-3"
           title={isCollapsed ? "Settings" : ""}
         >

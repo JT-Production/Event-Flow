@@ -28,11 +28,11 @@ export default function EventsSection() {
   const [gridValue, setGridValue] = useState<string>();
   const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 0;
 
-  useEffect(() => {
-    if (screenWidth >= 1250) {
-      setGridValue("4")
-      console.log(screenWidth)
-  }}, [screenWidth]);
+  // useEffect(() => {
+  //   if (screenWidth >= 1250) {
+  //     setGridValue("4")
+  //     console.log(screenWidth)
+  // }}, [screenWidth]);
 
 console.log(screenWidth)
   const getEvents = async () => {
@@ -94,6 +94,7 @@ console.log(limit)
           events.map((event) => (
             <div key={event.event_id} className=" flex flex-col gap-1 border border-black/15 rounded-3xl p-4 max-w-74 mb-3">
               <EventCard 
+              event={event}
                 eventId={event.event_id} 
                 name={event.name} 
                 date={event.date_human_readable} 

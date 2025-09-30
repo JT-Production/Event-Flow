@@ -31,7 +31,7 @@ export function EventDetailsModal({image,name,location,date,description,phoneNum
             <Image src={image} width={1000} height={1000} alt={name} className="h-62 border border-black/10 rounded-2xl lg:max-w-[575px] md:max-w-[475px] "/>
           <DialogTitle className="">{name}</DialogTitle>
           <DialogDescription className="text-xs  flex gap-4 justify-start">
-            <div className="flex gap-2 items-center py-"> <SlLocationPin className={`${location.length > 110 ? "text-4xl" : "text-lg "}`} />{location}</div>
+            <div className="flex gap-2 items-center py-"> <SlLocationPin className={`${location?.length > 110 ? "text-4xl" : "text-lg "}`} />{location}</div>
             <div className="flex gap-2 items-center py-"> <HiOutlineCalendarDateRange className="text-lg" />{date}</div>
           </DialogDescription>
         </DialogHeader>

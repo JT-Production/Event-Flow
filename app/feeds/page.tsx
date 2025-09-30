@@ -1,6 +1,7 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import EventsSection from './components/EventsSection';
+import EventCard from './components/EventCard';
 
 
 export default function Dashboard() {
@@ -8,7 +9,8 @@ export default function Dashboard() {
    
   return (
     <div>
-        <EventsSection/>
+      <h1>Saved</h1>
+        <EventsSection />
     </div>
   )
 }

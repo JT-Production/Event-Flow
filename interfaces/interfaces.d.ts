@@ -1,12 +1,12 @@
 interface EventType {
-  event_id: string;
-  name: string;
-  date_human_readable: string;
-  description: string;
-  thumbnail: string;
-  start_time: string;
-  end_time: string;
-  ticket_links: {
+  event_id?: string;
+  name?: string;
+  date_human_readable?: string;
+  description?: string;
+  thumbnail?: string;
+  start_time?: string;
+  end_time?: string;
+  ticket_links?: {
     link: string;
   };
   venue: {
@@ -24,7 +24,7 @@ interface EventType {
     website: string
     subtype: string
   };
-  tags: string[];
+  tags?: string[];
   
 }
 

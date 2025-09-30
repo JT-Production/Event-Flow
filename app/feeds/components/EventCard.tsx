@@ -1,12 +1,14 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsBookmarkDash } from "react-icons/bs";
 import { HiOutlineCalendarDateRange } from "react-icons/hi2";
 import { SlLocationPin } from "react-icons/sl";
 import { EventDetailsModal } from "./EventDetailsModal";
+import { useFavouriteStore } from "@/store/useFavoriteStore";
 
 export default function EventCard({
+  event,
   name,
   venue,
   eventId,
@@ -18,10 +20,19 @@ export default function EventCard({
   country,
   review,
   ticketLink,
-  rating
+  rating,
 }: any) {
   const [saved, setSaved] = useState(false);
+  const { addToFavorite, favourites } = useFavouriteStore();
 
+  const handleAddFavourite = () => {
+    addToFavorite(event);
+    console.log(favourites);
+    // console.log(event)
+  };
+  // useEffect(() => {
+  //   console.log(favourites)
+  // }, [favourites])
   return (
     <>
       <div className="relative inline-block " key={eventId}>
@@ -35,7 +46,10 @@ export default function EventCard({
           className="max-w-66 h-40 bg-black rounded-2xl"
         />
         <div
-          onClick={() => setSaved(!saved)}
+          onClick={() => {
+            setSaved(!saved);
+            handleAddFavourite();
+          }}
           className={`${
             saved ? "bg-blue-500 text-white" : "bg-white"
           } p-2.5 absolute top-3 right-3 rounded-full cursor-pointer `}
@@ -76,8 +90,6 @@ export default function EventCard({
             country={country}
             review={review}
             rating={rating}
-            
-
           />
         </div>
       </div>
