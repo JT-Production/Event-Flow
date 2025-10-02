@@ -4,22 +4,22 @@ import EventCard from '../feeds/components/EventCard';
 
 
 export default function Favourite() {
-    const [events, setEvents] = useState(null);
+    const [events, setEvents] = useState<EventType[]>();
     const storedEvents:any = localStorage.getItem("favourite");
   
     const parse = JSON.parse(storedEvents);
     useEffect(() => {
-      setEvents(parse.state.favourites)
-      console.log(parse.state.favourites)
+      setEvents(parse?.state?.favourites)
+      // console.log(parse.state.favourites)
       console.log(parse)
     },[storedEvents])
   
   return (
     
-     <div className={`  rounded-4xl grid sm:grid-cols-2 grid-cols-1 lg:grid-cols- md:grid-cols-4 gap-5 p-1 lg:mx-10 mx-5 place-items-center`}>
+     <div className={`rounded-4xl grid sm:grid-cols-2 grid-cols-1 lg:grid-cols- md:grid-cols-4 gap-5 p-1 lg:mx-10 mx-5 place-items-center`}>
              {events  ? (
-               events.map((event) => (
-                 <div key={event.event_id} className=" flex flex-col gap-1 border border-black/15 rounded-3xl p-4 max-w-74 mb-3">
+               events.map((event, ind) => (
+                 <div key={ind}  className=" flex flex-col gap-1 border border-black/15 rounded-3xl p-4 max-w-74 mb-3">
                    <EventCard 
                    event={event}
                      eventId={event.event_id} 
